@@ -2,6 +2,8 @@
 
 import Slider from '@/components/Slider';
 import Card from '@/components/Card';
+import MiniCard from '@/components/MiniCard';
+import React from 'react';
 
 const games = [
   {
@@ -80,13 +82,69 @@ const categories = [
   },
 ];
 
+const hot = [
+  {
+    id: 1,
+    name: 'Mobile Legends',
+    image:
+      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
+    desc: 'Moonton',
+  },
+  {
+    id: 2,
+    name: 'Free Fire',
+    image:
+      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
+    desc: 'Garena',
+  },
+  {
+    id: 3,
+    name: 'PUBG Mobile',
+    image:
+      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
+    desc: 'PUBG Corp',
+  },
+  {
+    id: 4,
+    name: 'Valorant',
+    image:
+      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
+    desc: 'Riot Games',
+  },
+];
+
 export default function Home() {
   return (
     <div className="max-w-7xl mx-auto">
       {/* Slider */}
       <Slider />
 
+      {/* Hot */}
       <div className="tabs tabs-border">
+        <input
+          type="radio"
+          name="hot_tabs"
+          className="tab"
+          aria-label="Popular"
+          defaultChecked
+        />
+        <div className="tab-content py-10">
+          {/* Semua Game */}
+          <div className="grid grid-cols-2 px-6 sm:grid-cols-4 xl:px-0 xl:grid-cols-4 gap-4">
+            {hot.map((game) => (
+              <MiniCard
+                key={game.id}
+                image={game.image}
+                title={game.name}
+                description={game.desc}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Game List */}
+      <div className="tabs tabs-border text-black">
         <input
           type="radio"
           name="my_tabs_2"
@@ -109,7 +167,7 @@ export default function Home() {
         </div>
 
         {categories.map((category) => (
-          <>
+          <React.Fragment key={category.id}>
             <input
               key={category.id}
               type="radio"
@@ -132,7 +190,7 @@ export default function Home() {
                   ))}
               </div>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
