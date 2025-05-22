@@ -1,0 +1,8 @@
+{
+    "home": "Home",
+    "transaction": "Transaction",
+    "favorite": "Favorite",
+    "user": "User",
+    "login": "Login",
+    "logout": "Logout"
+}
