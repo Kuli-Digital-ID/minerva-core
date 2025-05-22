@@ -63,7 +63,7 @@ export default function Slider() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden shadow-lg pb-8">
+    <div className="relative w-full overflow-hidden  mb-8">
       <div className="absolute inset-0 z-10 flex">
         <div className="w-1/2 h-full" onClick={() => paginate(-1)} />
         <div className="w-1/2 h-full" onClick={() => paginate(1)} />
