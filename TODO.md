@@ -1,6 +1,10 @@
-# TODO: Convert Navbar to Full Sidebar
+# TODO: Implement Clickable Cards with Game Detail Page
 
-- [x] Edit src/components/Navbar/index.tsx to create a fixed left sidebar with vertical navigation links, logo, and icons for all devices.
-- [x] Edit src/app/layout.tsx to add left margin to the main content to avoid overlap with the sidebar.
-- [x] Test the layout on different screen sizes to ensure the sidebar works as a full sidebar.
-- [x] Verify navigation links and authentication logic.
+- [x] Update Card component to accept and handle onClick prop for navigation
+- [x] Modify src/app/page.tsx to add onClick handlers to Card components for routing to game pages
+- [x] Create dynamic route src/app/game/[slug]/page.tsx with 4 containers:
+  - [x] Container 1: Tutorial on how to top up
+  - [x] Container 2: Form inputs for User ID, Server ID, WhatsApp Number
+  - [x] Container 3: Pricelist of diamond packages
+  - [x] Container 4: Payment options
+- [x] Test navigation and page rendering

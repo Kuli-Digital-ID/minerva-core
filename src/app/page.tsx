@@ -1,126 +1,129 @@
-'use client';
+"use client";
 
-import Slider from '@/components/Slider';
-import Card from '@/components/Card';
-import MiniCard from '@/components/MiniCard';
-import React from 'react';
+import Slider from "@/components/Slider";
+import Card from "@/components/Card";
+import MiniCard from "@/components/MiniCard";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 const games = [
   {
     id: 1,
-    name: 'Mobile Legends',
+    name: "Mobile Legends",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    type: 'mobile',
-    dev: 'Moonton',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    type: "mobile",
+    dev: "Moonton",
   },
   {
     id: 2,
-    name: 'Free Fire',
+    name: "Free Fire",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    type: 'mobile',
-    dev: 'Garena',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    type: "mobile",
+    dev: "Garena",
   },
   {
     id: 3,
-    name: 'PUBG Mobile',
+    name: "PUBG Mobile",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    type: 'pc',
-    dev: 'PUBG Corp',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    type: "pc",
+    dev: "PUBG Corp",
   },
   {
     id: 4,
-    name: 'Valorant',
+    name: "Valorant",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    type: 'pc',
-    dev: 'Riot Games',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    type: "pc",
+    dev: "Riot Games",
   },
   {
     id: 5,
-    name: 'Free Fire',
+    name: "Free Fire",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    type: 'pc',
-    dev: 'Garena',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    type: "pc",
+    dev: "Garena",
   },
   {
     id: 6,
-    name: 'PUBG Mobile',
+    name: "PUBG Mobile",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    type: 'mobile',
-    dev: 'PUBG Corp',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    type: "mobile",
+    dev: "PUBG Corp",
   },
   {
     id: 7,
-    name: 'Valorant',
+    name: "Valorant",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    type: 'mobile',
-    dev: 'Riot Games',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    type: "mobile",
+    dev: "Riot Games",
   },
 ];
 
 const categories = [
   {
     id: 1,
-    title: 'Mobile Games',
-    code: 'mobile',
+    title: "Mobile Games",
+    code: "mobile",
   },
   {
     id: 2,
-    title: 'PC Games',
-    code: 'pc',
+    title: "PC Games",
+    code: "pc",
   },
   {
     id: 3,
-    title: 'Joki',
-    code: 'joki',
+    title: "Joki",
+    code: "joki",
   },
 ];
 
 const hot = [
   {
     id: 1,
-    name: 'Mobile Legends',
+    name: "Mobile Legends",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    desc: 'Moonton',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    desc: "Moonton",
   },
   {
     id: 2,
-    name: 'Free Fire',
+    name: "Free Fire",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    desc: 'Garena',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    desc: "Garena",
   },
   {
     id: 3,
-    name: 'PUBG Mobile',
+    name: "PUBG Mobile",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    desc: 'PUBG Corp',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    desc: "PUBG Corp",
   },
   {
     id: 4,
-    name: 'Valorant',
+    name: "Valorant",
     image:
-      'https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75',
-    desc: 'Riot Games',
+      "https://cdn.xcashshop.com/media/file-1745899338-1qhe521f-mlbb-id.webp?w=256&q=75",
+    desc: "Riot Games",
   },
 ];
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <div className="max-w-7xl mx-auto">
       {/* Slider */}
       <Slider />
 
       {/* Hot */}
-      <div className="tabs tabs-border">
+      <div className="tabs tabs-border text-black">
         <input
           type="radio"
           name="hot_tabs"
@@ -144,7 +147,7 @@ export default function Home() {
       </div>
 
       {/* Game List */}
-      <div className="tabs tabs-border text-black">
+      <div className="tabs tabs-border text-black :hover:bg-[#60a5fa]">
         <input
           type="radio"
           name="my_tabs_2"
@@ -161,6 +164,11 @@ export default function Home() {
                 image={game.image}
                 title={game.name}
                 description={game.dev}
+                onClick={() =>
+                  router.push(
+                    `/game/${game.name.toLowerCase().replace(/\s+/g, "-")}`
+                  )
+                }
               />
             ))}
           </div>
@@ -186,6 +194,13 @@ export default function Home() {
                       image={game.image}
                       title={game.name}
                       description={game.dev}
+                      onClick={() =>
+                        router.push(
+                          `/game/${game.name
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`
+                        )
+                      }
                     />
                   ))}
               </div>

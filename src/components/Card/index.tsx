@@ -1,14 +1,18 @@
-import React from 'react';
+import React from "react";
 
 interface CardProps {
   image: string;
   title: string;
   description: string;
+  onClick?: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ image, title, description }) => {
+const Card: React.FC<CardProps> = ({ image, title, description, onClick }) => {
   return (
-    <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden group shadow-lg cursor-pointer">
+    <div
+      className="relative w-full aspect-[3/4] rounded-xl overflow-hidden group shadow-lg cursor-pointer"
+      onClick={onClick}
+    >
       {/* Background image */}
       <img
         src={image}
