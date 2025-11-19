@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   FaUser,
   FaShoppingCart,
@@ -9,13 +9,16 @@ import {
   FaHome,
   FaExchangeAlt,
   FaHeart,
+  FaSearch,
 } from "react-icons/fa";
 import type { FC } from "react";
 
 const Navbar: FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const isAuthenticated = true;
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const isActive = (href: string) => pathname === href;
 
@@ -84,6 +87,30 @@ const Navbar: FC = () => {
               >
                 Blog
               </Link>
+            </div>
+
+            {/* Search Bar */}
+            <div className="flex-1 max-w-md mx-4">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Cari game..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && searchQuery.trim()) {
+                      router.push(
+                        `/search?q=${encodeURIComponent(searchQuery.trim())}`
+                      );
+                    }
+                  }}
+                  className="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+                />
+                <FaSearch
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                  size={16}
+                />
+              </div>
             </div>
 
             {/* Right Side */}
@@ -175,6 +202,31 @@ const Navbar: FC = () => {
             />
             MINERVA
           </Link>
+        </div>
+
+        {/* Search Bar */}
+        <div className="px-4 py-4 border-b border-gray-400">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Cari game..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && searchQuery.trim()) {
+                  router.push(
+                    `/search?q=${encodeURIComponent(searchQuery.trim())}`
+                  );
+                  setMenuOpen(false);
+                }
+              }}
+              className="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+            />
+            <FaSearch
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              size={16}
+            />
+          </div>
         </div>
 
         {/* Navigation Links */}

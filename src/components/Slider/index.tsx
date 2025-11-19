@@ -63,7 +63,10 @@ export default function Slider() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden mb-8">
+    <div
+      className="relative w-full overflow-hidden mb-8"
+      style={{ perspective: "1000px" }}
+    >
       <div className="absolute inset-0 z-10 flex">
         <div className="w-1/2 h-full" onClick={() => paginate(-1)} />
         <div className="w-1/2 h-full" onClick={() => paginate(1)} />
@@ -78,7 +81,7 @@ export default function Slider() {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
@@ -86,8 +89,8 @@ export default function Slider() {
         />
       </AnimatePresence>
 
-      {/* Pagination Dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      {/* Pagination Bullets */}
+      <div className="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {images.map((_, i) => (
           <button
             key={i}
@@ -95,10 +98,12 @@ export default function Slider() {
               setIndex([i, i > index ? 1 : -1]);
               resetTimer();
             }}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              i === index ? "bg-white" : "bg-white/50"
+            className={`text-2xl transition-colors ${
+              i === index ? "text-gray-800" : "text-gray-400"
             }`}
-          />
+          >
+            •
+          </button>
         ))}
       </div>
     </div>

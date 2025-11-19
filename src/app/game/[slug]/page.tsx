@@ -42,16 +42,19 @@ const GamePage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-8">
-      <h1 className="text-3xl font-bold text-center text-black">
+      <h1 className="text-3xl font-bold text-center text-white">
         {gameName} Top-Up
       </h1>
 
       {/* Container 1: Tutorial */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-black">
+      <div
+        className="bg-gray-700 shadow-lg rounded-lg p-6 border border-white"
+        style={{ boxShadow: "0 0 15px rgba(255, 255, 255, 0.3)" }}
+      >
+        <h2 className="text-2xl font-semibold mb-4 text-white">
           How to Top Up
         </h2>
-        <ol className="list-decimal list-inside space-y-2 text-black">
+        <ol className="list-decimal list-inside space-y-2 text-white">
           <li>Enter your User ID and Server ID from the game.</li>
           <li>Select the diamond package you want to purchase.</li>
           <li>Provide your WhatsApp number for confirmation.</li>
@@ -65,8 +68,11 @@ const GamePage: React.FC = () => {
       </div>
 
       {/* Container 2: Form Inputs */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-black">
+      <div
+        className="bg-gray-700 shadow-lg rounded-lg p-6 border border-white"
+        style={{ boxShadow: "0 0 15px rgba(255, 255, 255, 0.3)" }}
+      >
+        <h2 className="text-2xl font-semibold mb-4 text-white">
           Account Information
         </h2>
         <div className="space-y-4 mb-4">
@@ -74,7 +80,7 @@ const GamePage: React.FC = () => {
             <div>
               <label
                 htmlFor="userId"
-                className="block text-sm font-medium text-black"
+                className="block text-sm font-medium text-white"
               >
                 User ID
               </label>
@@ -90,7 +96,7 @@ const GamePage: React.FC = () => {
             <div>
               <label
                 htmlFor="serverId"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-white"
               >
                 Server ID
               </label>
@@ -108,9 +114,9 @@ const GamePage: React.FC = () => {
         <div>
           <label
             htmlFor="whatsapp"
-            className="block text-sm font-medium text-black"
+            className="block text-sm font-medium text-white"
           >
-            WhatsApp Number
+            Nomer Whatsapp
           </label>
           <input
             type="text"
@@ -124,8 +130,11 @@ const GamePage: React.FC = () => {
       </div>
 
       {/* Container 3: Pricelist */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-black">
+      <div
+        className="bg-gray-700 shadow-lg rounded-lg p-6 border border-white"
+        style={{ boxShadow: "0 0 15px rgba(255, 255, 255, 0.3)" }}
+      >
+        <h2 className="text-2xl font-semibold mb-4 text-white">
           Diamond Packages
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -134,22 +143,25 @@ const GamePage: React.FC = () => {
               key={pkg.id}
               className={`border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer ${
                 selectedPackage === pkg.id
-                  ? "border-blue-500 bg-blue-50"
-                  : "border-gray-200"
+                  ? "border-blue-500 bg-gray-600"
+                  : "border-gray-500"
               }`}
               onClick={() => setSelectedPackage(pkg.id)}
             >
-              <h3 className="text-lg font-medium text-black">{pkg.name}</h3>
-              <p className="text-gray-600">{pkg.price}</p>
+              <h3 className="text-lg font-medium text-white">{pkg.name}</h3>
+              <p className="text-gray-300">{pkg.price}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Container 4: Payment Methods */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-black">
-          Payment Methods
+      <div
+        className="bg-gray-700 shadow-lg rounded-lg p-6 border border-white"
+        style={{ boxShadow: "0 0 15px rgba(255, 255, 255, 0.3)" }}
+      >
+        <h2 className="text-2xl font-semibold mb-4 text-white">
+          Metode Pembayaran
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {paymentMethods.map((method) => (
@@ -157,13 +169,13 @@ const GamePage: React.FC = () => {
               key={method.id}
               className={`border rounded-lg p-4 text-center hover:shadow-md transition-shadow cursor-pointer ${
                 selectedPayment === method.id
-                  ? "border-blue-500 bg-blue-50"
-                  : "border-gray-200"
+                  ? "border-blue-500 bg-gray-600"
+                  : "border-gray-500"
               }`}
               onClick={() => setSelectedPayment(method.id)}
             >
               <div className="text-3xl mb-2">{method.icon}</div>
-              <p className="font-medium text-black">{method.name}</p>
+              <p className="font-medium text-white">{method.name}</p>
             </div>
           ))}
         </div>
